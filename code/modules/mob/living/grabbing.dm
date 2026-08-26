@@ -212,6 +212,9 @@
 			if(grab_state >= GRAB_AGGRESSIVE)
 				bleed_suppressing = 0.25	//Better bleed suppression
 		if(/datum/intent/grab/choke)
+            if(HAS_TRAIT(user, TRAIT_PACIFISM))
+		to_chat(user, span_warning("I don't want to harm other living beings!"))
+		return FALSE
 			if(user.buckled)
 				to_chat(user, span_warning("I can't do this while buckled!"))
 				return FALSE
@@ -247,6 +250,9 @@
 					to_chat(user, span_danger("I [pick("choke", "strangle")] [C][chokehold ? " with a chokehold" : ""]!"))
 					user.changeNext_move(CLICK_CD_GRABBING)	//Stops spam for choking.
 		if(/datum/intent/grab/hostage)
+            if(HAS_TRAIT(user, TRAIT_PACIFISM))
+		to_chat(user, span_warning("I don't want to harm other living beings!"))
+		return FALSE
 			if(user.buckled)
 				to_chat(user, span_warning("I can't do this while buckled!"))
 				return FALSE
@@ -270,6 +276,9 @@
 						U.hostage = H
 						H.hostagetaker = U
 		if(/datum/intent/grab/twist)
+            if(HAS_TRAIT(user, TRAIT_PACIFISM))
+		to_chat(user, span_warning("I don't want to harm other living beings!"))
+		return FALSE
 			if(user.buckled)
 				to_chat(user, span_warning("I can't do this while buckled!"))
 				return FALSE
@@ -282,6 +291,9 @@
 					user.stamina_add(rand(3,8))
 					twistlimb(user)
 		if(/datum/intent/grab/twistitem)
+            if(HAS_TRAIT(user, TRAIT_PACIFISM))
+		to_chat(user, span_warning("I don't want to harm other living beings!"))
+		return FALSE
 			if(user.buckled)
 				to_chat(user, span_warning("I can't do this while buckled!"))
 				return FALSE
