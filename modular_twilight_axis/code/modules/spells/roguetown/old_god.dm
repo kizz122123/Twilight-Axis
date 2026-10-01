@@ -47,7 +47,7 @@
 	var/will_lose_limbs = FALSE
 
 	// Vicariate-exclusive: Oxygen damage warning instead of resurrection warning
-	if(H.getOxyLoss() >= 150)
+	if(H.getOxyLoss() >= 100)
 		will_die_oxy = TRUE
 
 	// Limb restoration costs your limbs.
@@ -184,6 +184,9 @@
 
 			if(C.blood_volume <= 0)
 				C.blood_volume = BLOOD_VOLUME_SURVIVE
+
+	H.remove_CC()
+	H.update_stat()
 
 	// VISUALS
 	C.visible_message(span_danger("[C] assumes [H]'s suffering through VICARIATE!"))
